@@ -72,19 +72,27 @@ class Monster extends Phaser.Scene {
 
         this.aKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A); // A key
         this.dKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D); // D key
+
+        this.input.keyboard.on("keydown-S", (event) => {   
+            my.sprite.smile.setVisible(true); // show smile
+            my.sprite.fangs.setVisible(false); // hide fangs
+        }) 
+        this.input.keyboard.on("keydown-F", (event) => {
+            my.sprite.smile.setVisible(false); // hide smile
+            my.sprite.fangs.setVisible(true); // show fangs
+        })
     }
 1
     update() {
         let my = this.my;    // create an alias to this.my for readability
        
-        // Check for keyboard input
-        if (this.input.keyboard.checkDown(this.input.keyboard.addKey("S"), 0)) {
+/*         if (this.input.keyboard.checkDown(this.input.keyboard.addKey("S"), 0)) {
             my.sprite.smile.setVisible(true); // show smile
             my.sprite.fangs.setVisible(false); // hide fangs
         } else if (this.input.keyboard.checkDown(this.input.keyboard.addKey("F"), 0)) {
             my.sprite.smile.setVisible(false); // hide smile
             my.sprite.fangs.setVisible(true); // show fangs
-        }
+        } */
 
         for (let part in my.sprite) {
             if (this.aKey.isDown){
